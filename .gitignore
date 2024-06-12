@@ -1,0 +1,33 @@
+# IDE
+.idea
+.vscode
+
+# Byte file/compiled/DLL
+__pycache__
+*.pyc
+.swp
+
+# Pipenv
+Pipfile.lock
+Pipfile
+
+# pyenv
+.python-version
+
+# Testing
+.pytest_cache
+.coverage
+htmlcov/
+
+# Environments
+.env
+env
+venv
+
+# Terraform
+lambda_layer/
+.terraform*
+terraform.tfstate*
+terraform/layer*
+ignore.tf
+*zip

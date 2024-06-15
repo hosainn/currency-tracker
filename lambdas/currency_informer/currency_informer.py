@@ -4,6 +4,7 @@ import json
 import logging
 import os
 from datetime import datetime, timedelta, timezone
+from enum import Enum
 
 import boto3
 import pytz
@@ -18,19 +19,36 @@ TABLE_NAME = os.environ.get("TABLE_NAME")
 EXCHANGE_RATES_TABLE = DYNAMODB.Table(TABLE_NAME)
 
 
+class CurrencyRateStatus(Enum):
+    """
+    Enum representing status levels for currency exchange rates.
+
+    Attributes:
+        HIGH (str): Indicates a high current rate compared to the previous rate.
+        LOW (str): Indicates a low current rate compared to the previous rate.
+        EQUAL (str): Indicates a equal current rate compared to the previous rate.
+        NOT_AVAILABLE (str): Indicates that the rate is not available for the current date.
+    """
+
+    HIGH = "high"
+    LOW = "low"
+    EQUAL = "equal"
+    NOT_AVAILABLE = "not_available"
+
+
 def get_exchange_rates_status(current_rate, previous_rate):
     """asdf"""
 
     if current_rate is None:
-        status = "not_available"
+        status = CurrencyRateStatus.NOT_AVAILABLE
     elif previous_rate is None:
-        status = "not_available"
+        status = CurrencyRateStatus.NOT_AVAILABLE
     elif current_rate > previous_rate:
-        status = "high"
+        status = CurrencyRateStatus.HIGH
     elif current_rate < previous_rate:
-        status = "low"
+        status = CurrencyRateStatus.LOW
     else:
-        status = "equal"
+        status = CurrencyRateStatus.EQUAL
 
     return status
 

@@ -1,4 +1,4 @@
-resource "aws_dynamodb_table" "my_table" {
+resource "aws_dynamodb_table" "currency_history_table" {
   name         = var.table_name
   hash_key     = "date"
   billing_mode = "PROVISIONED"

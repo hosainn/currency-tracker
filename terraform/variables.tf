@@ -17,3 +17,14 @@ variable "exchange_rate_fetcher_scedule" {
   description = "Schedle to fetch exchange rate"
   default     = "rate(1 minute)"
 }
+
+
+variable "ecb_exchange_rates_url" {
+  description = "URL for fetching daily exchange rates from ECB"
+  default     = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+}
+
+variable "ecb_namespace" {
+  description = "Namespace for XML elements in ECB exchange rates XML"
+  default     = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"
+}

@@ -4,11 +4,13 @@
 
 The goal of this project is to design and build a currency exchange tracking application within the AWS Lambda environment. The application will fetch exchange rate data from the [European Central Bank (ECB)](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html) on a daily basis around 16:05 CET and store this information in a database. It will expose a public REST API endpoint that allows clients to retrieve current exchange rates for tracked currencies and understand how these rates have changed compared to the previous day.
 
-![Technical design](https://drive.google.com/uc?id=1AeA0KhWip86YyNCTJ4sUt_UqOVvWuZl6)
-
 ## Development Overview
 
 This project uses Terraform to manage the infrastructure for the Currency Tracker application. The deployment is designed for an AWS environment and includes steps to initialize, apply, and destroy the Terraform-managed resources.
+
+## Technical design 
+
+![Technical design](https://drive.google.com/uc?id=1AeA0KhWip86YyNCTJ4sUt_UqOVvWuZl6)
 
 ## Prerequisites
 

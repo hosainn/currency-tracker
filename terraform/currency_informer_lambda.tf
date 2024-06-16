@@ -1,12 +1,12 @@
 data "archive_file" "currency_informer_lambda_logslambda_zip_file" {
-  output_path = "${path.module}/../lambda/currency_informer.zip"
-  source_dir  = "${path.module}/../lambda/currency_informer"
+  output_path = "${path.module}/../lambdas/currency_informer.zip"
+  source_dir  = "${path.module}/../lambdas/currency_informer"
   excludes    = ["__pycache__", "*.pyc"]
   type        = "zip"
 }
 
 resource "aws_lambda_function" "currency_informer_lambda" {
-  filename         = "${path.module}/../lambda/currency_informer.zip"
+  filename         = "${path.module}/../lambdas/currency_informer.zip"
   function_name    = "currency-informer"
   role             = aws_iam_role.currency_informer_lambda_iam_role.arn
   handler          = "currency_informer.handler"
@@ -26,7 +26,7 @@ resource "aws_iam_role" "currency_informer_lambda_iam_role" {
 }
 
 resource "aws_cloudwatch_log_group" "currency_informer_lambda_log_group" {
-  name              = "/aws/lambda/currency_informer"
+  name              = "/aws/lambdas/currency_informer"
   retention_in_days = local.lambda_retention_in_days
 }
 

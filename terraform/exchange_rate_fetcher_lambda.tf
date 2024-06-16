@@ -1,12 +1,12 @@
 data "archive_file" "exchange_rate_fetcher_lambda_zip_file" {
-  output_path = "${path.module}/../lambda/exchange_rate_fetcher.zip"
-  source_dir  = "${path.module}/../lambda/exchange_rate_fetcher"
+  output_path = "${path.module}/../lambdas/exchange_rate_fetcher.zip"
+  source_dir  = "${path.module}/../lambdas/exchange_rate_fetcher"
   excludes    = ["__pycache__", "*.pyc"]
   type        = "zip"
 }
 
 resource "aws_lambda_function" "exchange_rate_fetcher_lambda" {
-  filename         = "${path.module}/../lambda/exchange_rate_fetcher.zip"
+  filename         = "${path.module}/../lambdas/exchange_rate_fetcher.zip"
   function_name    = "exchange-rate-fetcher"
   role             = aws_iam_role.exchange_rate_fetcher_laambda_iam_role.arn
   handler          = "exchange_rate_fetcher.handler"
@@ -28,7 +28,7 @@ resource "aws_iam_role" "exchange_rate_fetcher_laambda_iam_role" {
 }
 
 resource "aws_cloudwatch_log_group" "exchange_rate_fetcher_laambda_log_group" {
-  name              = "/aws/lambda/exchange_rate_fetcher"
+  name              = "/aws/lambdas/exchange_rate_fetcher"
   retention_in_days = local.lambda_retention_in_days
 }
 

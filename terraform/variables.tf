@@ -15,7 +15,7 @@ variable "write_capacity" {
 
 variable "exchange_rate_fetcher_scedule" {
   description = "Schedle to fetch exchange rate"
-  default     = "cron(5 15 * * ?)"
+  default     = "cron(5 15 * * ? *)"
 }
 
 

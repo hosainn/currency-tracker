@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: Currency Informer API
+  description: This API provides information on currency exchange rates.
+  version: 1.0.0
+paths:
+  /exchange-rates:
+    get:
+      summary: Get exchange rates information
+      description: Returns the current and previous day's exchange rates along with their status.
+      responses:
+        '200':
+          description: Successfully retrieved exchange rates information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  timestamp_cet:
+                    type: string
+                    format: date-time
+                    description: The timestamp in CET timezone.
+                  current_date:
+                    type: string
+                    format: date
+                    description: The current date in CET timezone.
+                  previous_date:
+                    type: string
+                    format: date
+                    description: The previous date in CET timezone.
+                  exchange_rates:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        current_rate:
+                          type: number
+                          format: float
+                          nullable: true
+                          description: The current exchange rate.
+                        previous_rate:
+                          type: number
+                          format: float
+                          nullable: true
+                          description: The previous day's exchange rate.
+                        status:
+                          type: string
+                          enum: [high, low, equal, not_available]
+                          description: The status of the current rate compared to the previous rate.
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Method Not Allowed message

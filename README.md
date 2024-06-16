@@ -4,10 +4,7 @@
 
 The goal of this project is to design and build a currency exchange tracking application within the AWS Lambda environment. The application will fetch exchange rate data from the [European Central Bank (ECB)](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html) on a daily basis around 16:05 CET and store this information in a database. It will expose a public REST API endpoint that allows clients to retrieve current exchange rates for tracked currencies and understand how these rates have changed compared to the previous day.
 
-## [Click here](https://app.diagrams.net/?mode=google#G1tQ7Svd47gaxt3MSCQu4wSA-HYGgi-P50#%7B%22pageId%22%3A%22DpC3ov5GFhaDNXzQjg_z%22%7D) to see technical design
-
-
-
+![Technical design](https://drive.google.com/uc?id=1AeA0KhWip86YyNCTJ4sUt_UqOVvWuZl6)
 
 ## Development Overview
 

@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "currency_api" {
 resource "aws_api_gateway_resource" "currency_resource" {
   rest_api_id = aws_api_gateway_rest_api.currency_api.id
   parent_id   = aws_api_gateway_rest_api.currency_api.root_resource_id
-  path_part   = "currency"
+  path_part   = "exchange-rates"
 }
 
 resource "aws_api_gateway_method" "get_currency" {
